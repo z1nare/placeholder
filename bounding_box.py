@@ -37,14 +37,12 @@ def main(path):
     # Write to output file
     output_file="result.txt"
     with open(output_file, "w") as file:
-        idx=0
         for im in os.listdir(path):
             if im.lower().endswith(".jpg"):
                 im_path = os.path.join(path,im)
                 faces = detect_faces(image_path=im_path, model=model) # Detection
                 for (x, y, w, h) in faces:
-                    file.write(f"{idx} {x} {y} {w} {h}\n")
-                idx+=1
+                    file.write(f"{im} {x} {y} {w} {h}\n")
 
 if __name__ == "__main__":
     # Change to your current path with data
